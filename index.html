@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Learning vue</title>
 </head>
 <body>
-    
+    <h1>HELLO VUE</h1>
+    <div id="app">
+        <h2 v-if="showZabr">{{title}} - {{author}} - {{age}}</h2>
+        <button @click="ShowHide">Show / Hide</button>
+        <button @click="changeTitle">Change title</button>
+        <button @click="age++">Increase age</button>
+        <button @click="age--">Decrease age</button>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
