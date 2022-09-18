@@ -6,16 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Learning vue</title>
+    <style>
+        .box{
+            padding:100px;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin: 20px;
+            display: inline-block;
+        }
+        .fav{
+            color:rgb(255, 53, 53);
+        }
+    </style>
 </head>
 <body>
     <h1>HELLO VUE</h1>
     <div id="app">
-        <h2 v-if="showZabr">{{title}} - {{author}} - {{age}}</h2>
+        <h2 v-if="showZabr" v-for="zobr in zobrs" :class="{fav:zobr.isfav}" >{{zobr.title}} - {{zobr.author}}
+            <img :src="zobr.img" alt="zobr.title">
+            <button @click="toggleFav(zobr)">Favourite</button>
+        </h2>
+        
         <button @click="ShowHide">Show / Hide</button>
-        <button @click="changeTitle">Change title</button>
-        <button @click="age++">Increase age</button>
-        <button @click="age--">Decrease age</button>
+        <h2 v-for="zobr in filteredZobrs" :class="{fav:zobr.isfav}">{{zobr.title}} - {{zobr.author}}</h2>
+        <!-- <button @click="changeTitle">Change title</button> -->
+        <!-- <button @click="age++">Increase age</button>
+        <button @click="age--">Decrease age</button> -->
+
+        <!-- <div class="box" @mouseover="handleEvent($event,5)">mouse over (enter)</div>
+        <div class="box" @mouseleave="handleEvent">mouse leave</div>
+        <div class="box" @dblclick="handleEvent">double click</div>
+        <div class="box" @mousemove="handleMouseMovement">Position - {{X}} {{Y}}</div> -->
+
+
     </div>
-    <script src="app.js"></script>
+    <script src="lec3.js"></script>
 </body>
 </html>

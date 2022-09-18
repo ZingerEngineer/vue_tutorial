@@ -4,7 +4,7 @@ const app = Vue.createApp({
         showZabr: true,
       title: "Zabron",
       author: "Bob",
-      age: "27",
+      age: "27"
     };
   },
   methods: {
@@ -21,7 +21,7 @@ this.showZabr = !this.showZabr
     },
   }})
 app.mount("#app");
-/*this refrences to the component itself 
+/*this refrences to the component itself
 and it's data(variables,constants,etc..)to use it inside of our methods.
 
 vue directives allow us to render our components more dynamicly and invoke
