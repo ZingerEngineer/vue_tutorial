@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar">
     <div id="buttons">
-      <button ref="dropDown" @click="dropDownMenu">☰</button>
+      <button ref="dropDownButton" :class="{clicked : isOpen}" @click="dropDownMenu">☰</button>
       <button>Home</button>
       <button>Sign up</button>
       <button>Log in</button>
@@ -17,16 +17,19 @@
 <script>
 export default {
   name: "NavBar",
+  data(){
+    return {isOpen : false}
+  },
   methods: {
     dropDownMenu() {
-      this.$refs.dropDown.setAttribute("class", "clicked");
-      this.$refs.dropDown.innerText = "^";
+      this.isOpen = !this.isOpen
+      this.$refs.dropDownButton.innerText = "^"
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .nav-bar {
   height: 60px;
   width: 100%;
@@ -61,5 +64,8 @@ button:hover {
   background-color: rgb(116, 116, 116);
   border-width: 2px;
   border-color: rgb(114, 114, 114);
+}
+#buttons{
+  display: flex;
 }
 </style>
