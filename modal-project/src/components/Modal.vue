@@ -1,8 +1,11 @@
 <template>
-  <button class="modal-button" @click="showModalHandler">Click me !</button>
-  <div v-if="showModal" class="wrapper">
-    <div class="backDrop"></div>
-    <div class="modal-body"><h1>{{title}}</h1></div>
+  <div class="wrapper">
+    <div @click.self = "closeModalEventEmitter" class="backDrop"></div>
+    <div class="modal-body" :class="{danger:themed==='danger'}">
+      <h1>{{ title }}</h1>
+      <div class="modal-content">{{text}}</div>
+      <template class="links"><slot name="links"></slot></template>
+    </div>
   </div>
 </template>
 <script>
@@ -13,30 +16,15 @@ export default {
       showModal: false,
     };
   },
-  props:[
-    'title'
-  ],
+  props: ["title","text","themed"],
   methods: {
-    showModalHandler() {
-      this.showModal = !this.showModal;
-    },
+    closeModalEventEmitter(){
+      this.$emit('closeModal')
+    }
   },
 };
 </script>
 <style scoped>
-.modal-button {
-  width: 85px;
-  height: 50px;
-  background-color: rgb(8, 211, 116);
-  font-size: 15px;
-  border: solid;
-  border-width: 1px;
-  border-color: rgb(39, 225, 138);
-  color: white;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
 .backDrop {
   position: fixed;
   top: 0px;
@@ -45,11 +33,31 @@ export default {
   background-color: rgb(0 0 0 / 79%);
 }
 .modal-body {
-    position: relative;
-    width: 500px;
-    height: 300px;
-    margin: auto;
-    background-color: rgb(8, 211, 116);
-    border-radius: 20px;
+  position: relative;
+  width: 500px;
+  height: 300px;
+  margin: auto;
+  padding: 50px;
+  background-color: rgb(255 255 255);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+h1 {
+  margin: auto;
+  font-size: 25px;
+  width: fit-content;
+  font-family: "Arial rounded MT", arial, sans-serif;
+}
+.modal-content{
+  width: fit-content;
+  margin: auto;
+  position: relative;
+  top:50px;
+  font-family: "Arial rounded MT", arial, sans-serif;
+
+}
+.danger{
+  background-color: red;
+  color: white;
 }
 </style>

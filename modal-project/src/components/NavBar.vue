@@ -37,6 +37,7 @@ export default {
   background-color: #ccc;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 button {
@@ -49,6 +50,7 @@ button {
   width: 70px;
   height: 60px;
   cursor: pointer;
+        font-family: "Arial rounded MT",arial,sans-serif
 }
 
 button:hover {
